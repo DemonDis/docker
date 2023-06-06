@@ -7,15 +7,15 @@ pip freeze > requirements.txt
 
 ## 
 ```bash
-docker build -t my-python-app .
+docker build -t test-cucmber .
 ```
 ## 
 ```bash
-docker run -it --rm --name my-running-app my-python-app
+docker run -it --rm --name test-cucmber test-cucmber
 ```
 ## 
 ```bash
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp python:3 python your-daemon-or-script.py
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp python:3 python test_01.py
 ```
 
 
