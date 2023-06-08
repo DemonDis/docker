@@ -1,0 +1,11 @@
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# pythone
+.pytest_cache
+geckodriver.log
+__pycache__
