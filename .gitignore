@@ -9,3 +9,9 @@
 .pytest_cache
 geckodriver.log
 __pycache__
+
+# log
+log
+
+# venv
+.venv
