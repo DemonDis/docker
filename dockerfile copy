@@ -1,0 +1,40 @@
+FROM python:3
+
+USER root
+
+WORKDIR /usr/src/app
+
+# RUN apt-get update
+
+# RUN apt-get install -y python3
+RUN apt-get install qemu-system
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# COPY firefox_114.0-1_amd64.deb /tmp
+# RUN dpkg -i /tmp/firefox_114.0-1_amd64.deb \
+#     && rm /tmp/*
+
+
+#=========
+# Firefox
+#=========
+ARG FIREFOX_VERSION=114.0
+# COPY browser/firefox-114.0.tar.bz2 /tmp
+# RUN  tar -C /opt -xjf /tmp/firefox-114.0.tar.bz2 \
+#   && rm /tmp/firefox-114.0.tar.bz2 \
+#   && mv /opt/firefox /opt/firefox-$FIREFOX_VERSION \
+#   && ln -fs /opt/firefox-$FIREFOX_VERSION/firefox /usr/bin/firefox
+# RUN apt-get update
+# RUN apt-get install firefox-esr
+# COPY . .
+
+RUN wget -O firefoxsetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+RUN tar -xf firefoxsetup.tar.bz2 --directory /opt
+# RUN /opt/firefox/./firefox
+RUN mv /opt/firefox /opt/firefox-$FIREFOX_VERSION
+RUN ln -fs /opt/firefox-$FIREFOX_VERSION/firefox /usr/bin/firefox
+
+CMD [ "python", "test_01.py" ]
+
+# USER runner

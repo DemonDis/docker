@@ -1,0 +1,18 @@
+FROM python:3
+
+USER root
+
+WORKDIR /usr/src/app
+
+# COPY requirements.txt ./
+# RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+RUN  dpkg -i ./usr/src/app/firefox_114.0-1_amd64.deb
+# RUN apt install ./usr/src/app/firefox_114.0-1_amd64.deb
+
+
+
+CMD [ "python", "./test_01.py" ]
+
+# USER runner:runner
