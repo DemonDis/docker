@@ -2,6 +2,8 @@ FROM python:3
 
 USER root:root
 
+# RUN apt update
+# RUN apt install firefox-esr
 WORKDIR /usr/src/app
 
 COPY requirements.txt ./
