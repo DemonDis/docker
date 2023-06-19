@@ -1,15 +1,12 @@
 from selenium import webdriver
 from pytest_bdd import scenario, when
-# from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.options import Options 
+from selenium.webdriver.chrome.options import Options 
  
 options = Options()
-# options.headless = True
-options.add_argument("-headless")
-driver = webdriver.Firefox(options=options)
-
-# driver = webdriver.Firefox(service=Service('./drivers/geckodriver'))
-# driver = webdriver.Firefox()
+options.add_argument("headless")
+options.add_argument("no-sandbox")
+options.add_argument("disable-dev-shm-usage")
+driver = webdriver.Chrome(options=options)
 
 @scenario('test.feature', 'посещаю фронт')
 def test_посещаю_фронт():
