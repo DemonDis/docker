@@ -2,38 +2,27 @@
 
 ## requirements lib
 ```bash
-pip freeze > requirements.txt
+$ pip freeze > requirements.txt
 ```
-
 ## build image
 ```bash
-docker build -t test-cucumber .
+$ docker build -t test-cucumber .
 ```
 ## run pytest test
 ```bash
-docker run test-cucumber pytest test_01.py
+$ docker run test-cucumber pytest test_01.py
 ```
-## 
+## IN => image docker bash terminal
 ```bash
-docker run -it --rm --name test-cucumber test-cucumber
+$ docker run -it test-cucumber bash
 ```
-## IN => image docker
+## cache download lib => folder (/var/cache/apt/archives/)
 ```bash
-docker run -it test-cucumber bash
+$ apt install --download-only firefox-esr
 ```
-## 
+## move file
 ```bash
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp python:3 python test_01.py
-```
-## cache lib
-```bash
-apt-get install --download-only 
+$ cp /browser/firefox-esr_102.12.0esr-1_amd64.deb /var/cache/apt/archives
 ```
 
 
-
-cp /browser/firefox-esr_102.12.0esr-1_amd64.deb /var/cache/apt/archives
-
-cd /var/cache/apt/archives
-apt update
-apt install --download-only firefox-esr
