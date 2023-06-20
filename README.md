@@ -1,5 +1,13 @@
 # DOCKER + BROWSERS + PYTES + SELENIUM
 
+## activate VENV
+```bash
+$ . ./init.sh
+```
+## stop VENV
+```bash
+$ deactivate
+```
 ## requirements lib
 ```bash
 $ pip freeze > requirements.txt

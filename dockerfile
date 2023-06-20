@@ -22,10 +22,10 @@ RUN wget https://github.com/mozilla/geckodriver/releases/download/v${geckodriver
 # =======
 # CHROME
 # =======
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-    && apt update && apt upgrade \
-    && apt install google-chrome-stable -y
+# RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+#     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+#     && apt update && apt upgrade \
+#     && apt install google-chrome-stable -y
 
 # =======
 # CHROMEDRIVER
@@ -44,6 +44,6 @@ RUN pip install --no-cache-dir -r requirements.txt \
 
 # CMD [ "python", "./test_01.py" ]
 
-COPY [ "test_01.py", "test_02.py", "test_01.feature", "pytest.ini", "./" ]
+COPY [ "test_01.py", "test_02.py", "test.feature", "pytest.ini", "./" ]
 
 # USER runner:runner
