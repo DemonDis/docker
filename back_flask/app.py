@@ -32,6 +32,7 @@ def rest_api():
         for line in output:
             print(line)
         container.wait()
+        client.remove_container(container)
         tree = etree.parse('/Users/dimart/tmp_docker/logs/result.xml')
         xml_hostname = tree.xpath('//testsuites/testsuite/@hostname')[0]
         return {
