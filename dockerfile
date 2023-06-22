@@ -4,7 +4,7 @@ USER root:root
 
 WORKDIR /usr/src/app
 
-VOLUME [ "/data" ]
+VOLUME [ "/Users/dimart/tmp_docker:/usr/src/app/logs" ]
 
 ARG geckodriver_ver=0.33.0
 ARG chromedriver_ver=114.0.5735.90

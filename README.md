@@ -28,9 +28,11 @@ $ docker run -it test-cucumber bash
 ```bash
 $ apt install --download-only firefox-esr
 ```
-## move file
+## Move file
 ```bash
 $ cp /browser/firefox-esr_102.12.0esr-1_amd64.deb /var/cache/apt/archives
 ```
-
-
+## Folder local <==> docker
+```bash
+$ docker run -it -v /Users/dimart/tmp_docker:/usr/src/app/logs test-cucumber pytest test_01.py
+```
