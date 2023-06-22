@@ -9,7 +9,7 @@ function App() {
   const axios_POST = () => {
     axios.post(baseURL, {
         'request': {
-            'name': 'back'
+            'name': 'test_01',
         },
         'request_type': 'auto_test'
     })

@@ -2,7 +2,8 @@ from selenium import webdriver
 from pytest_bdd import scenario, when
 # from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options 
- 
+import time
+
 options = Options()
 # options.headless = True
 options.add_argument("-headless")
@@ -20,6 +21,7 @@ def test_посещаю_фронт():
 def have_five():
     """я ya.ru."""
     driver.get("http://www.ya.ru")
+    time.sleep(7)
     text_example = '!!!!!!'
     driver.quit()
     return text_example

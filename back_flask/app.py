@@ -15,9 +15,11 @@ print(client.containers.list())
 def rest_api():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
+        json = request.json
+        test_name = json['request']['name']
         container = client.containers.run(
             image='test-cucumber',
-            command='pytest test_01.py',
+            command=f'pytest {test_name}.py',
             volumes={
                 '/Users/dimart/tmp_docker': {
                     'bind': '/usr/src/app/logs',
@@ -27,11 +29,14 @@ def rest_api():
             detach=True
         )
         output = container.attach(stdout=True, stream=True, logs=True)
+        for line in output:
+            print(line)
+        container.wait()
         tree = etree.parse('/Users/dimart/tmp_docker/logs/result.xml')
         xml_hostname = tree.xpath('//testsuites/testsuite/@hostname')[0]
         return {
         'request': {
-            'name': 'back',
+            'name': test_name,
             'hostname' : xml_hostname
         },
         'request_type': 'auto_test'
