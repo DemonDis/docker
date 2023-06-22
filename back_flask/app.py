@@ -1,17 +1,41 @@
 from flask import Flask, request
 from flask_cors import CORS
+import docker
+from lxml import etree
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config.from_object(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+client = docker.client.from_env()
+print(client.containers.list())
+
 @app.route("/", methods=['POST'])
 def rest_api():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
-        json = request.json
-        return json
+        container = client.containers.run(
+            image='test-cucumber',
+            command='pytest test_01.py',
+            volumes={
+                '/Users/dimart/tmp_docker': {
+                    'bind': '/usr/src/app/logs',
+                    'mode': 'rw'
+                }
+            },
+            detach=True
+        )
+        output = container.attach(stdout=True, stream=True, logs=True)
+        tree = etree.parse('/Users/dimart/tmp_docker/logs/result.xml')
+        xml_hostname = tree.xpath('//testsuites/testsuite/@hostname')[0]
+        return {
+        'request': {
+            'name': 'back',
+            'hostname' : xml_hostname
+        },
+        'request_type': 'auto_test'
+    }
     else:
         return 'Content-Type not supported'
 
