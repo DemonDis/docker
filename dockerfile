@@ -4,6 +4,8 @@ USER root:root
 
 WORKDIR /usr/src/app
 
+VOLUME [ "/data" ]
+
 ARG geckodriver_ver=0.33.0
 ARG chromedriver_ver=114.0.5735.90
 # =======
