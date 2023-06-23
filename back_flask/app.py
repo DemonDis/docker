@@ -4,12 +4,10 @@ import docker
 from lxml import etree
 
 app = Flask(__name__)
-cors = CORS(app)
-app.config.from_object(__name__)
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app)
 
 client = docker.client.from_env()
-print(client.containers.list())
+# print(client.containers.list())
 
 @app.route("/", methods=['POST'])
 def rest_api():
@@ -32,7 +30,6 @@ def rest_api():
         for line in output:
             print(line)
         container.wait()
-        client.remove_container(container)
         tree = etree.parse('/Users/dimart/tmp_docker/logs/result.xml')
         xml_hostname = tree.xpath('//testsuites/testsuite/@hostname')[0]
         return {
