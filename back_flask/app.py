@@ -15,9 +15,12 @@ def rest_api():
     if (content_type == 'application/json'):
         json = request.json
         test_name = json['request']['name']
+        format = json['request']['format']
+        # result_file = '--junit-xml=/usr/src/app/logs/logs/result.xml --strict-markers'
+        result_file = '--alluredir=/usr/src/app/logs/logs'
         container = client.containers.run(
             image='test-cucumber',
-            command=f'pytest {test_name}.py',
+            command=f'pytest {result_file} {test_name}.py',
             volumes={
                 '/Users/dimart/tmp_docker': {
                     'bind': '/usr/src/app/logs',
@@ -35,7 +38,8 @@ def rest_api():
         return {
         'request': {
             'name': test_name,
-            'hostname' : xml_hostname
+            'hostname' : xml_hostname,
+            'format': format
         },
         'request_type': 'auto_test'
     }
