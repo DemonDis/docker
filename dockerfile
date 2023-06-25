@@ -11,7 +11,7 @@ ARG chromedriver_ver=114.0.5735.90
 # =======
 # FIREFOX
 # =======
-RUN apt update && apt upgrade \
+RUN apt update \
     && apt install -y firefox-esr
 
 # =======

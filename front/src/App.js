@@ -6,10 +6,10 @@ import './App.css';
 const baseURL = 'http://127.0.0.1:3030'
 
 function App() {
-  const axios_POST = () => {
+  const axios_POST = (testName) => {
     axios.post(baseURL, {
         'request': {
-            'name': 'test_01',
+            'name': testName,
             'format': 'xml'
         },
         'request_type': 'auto_test'
@@ -26,7 +26,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => axios_POST()}>CLICK</button>
+        <button onClick={() => axios_POST('test_01')}>CLICK_1</button>
+        <button onClick={() => axios_POST('test_02')}>CLICK_2</button>
+        <button onClick={() => axios_POST('test_error')}>CLICK_test_error</button>
       </header>
     </div>
   );
