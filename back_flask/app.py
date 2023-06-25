@@ -29,9 +29,10 @@ def rest_api():
             detach=True
         )
         output = container.attach(stdout=True, stream=True, logs=True)
+        name_container = client.containers.list()[0].id[0]
         for line in output:
             print(line)
-        name_container = client.containers.list()[0]
+
         container.wait()
         # container = client.containers.run(
         #     image='test-cucumber',
