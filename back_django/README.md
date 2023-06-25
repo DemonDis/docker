@@ -13,4 +13,7 @@ $ deactivate
 $ cd backproject
 $ ./manage.py runserver
 ```
-
+## for fist bd command
+```bash
+$  ./manage.py migrate
+```
