@@ -46,6 +46,6 @@ RUN pip install --no-cache-dir -r requirements.txt \
 
 # CMD [ "python", "./test_01.py" ]
 
-COPY [ "test_01.py", "test_02.py", "test.feature", "pytest.ini", "./" ]
+COPY [ "tests", "test.feature", "./" ]
 
 # USER runner:runner

@@ -15,11 +15,11 @@ def rest_api():
         json = request.json
         test_name = json['request']['name']
         format = json['request']['format']
-        result_file = '--junit-xml=/usr/src/app/logs/logs/result.xml --strict-markers'
-        # result_file = '--alluredir=/usr/src/app/logs/logs'
+        # result_file = '--junit-xml=/usr/src/app/logs/logs/result.xml --strict-markers --alluredir=/usr/src/app/logs/logs'
+        # result_file = ''
         container = client.containers.run(
             image='test-cucumber',
-            command=f'pytest {result_file} {test_name}.py',
+            command=f'pytest ./{test_name}/{test_name}.py',
             volumes={
                 '/Users/dimart/tmp_docker': {
                     'bind': '/usr/src/app/logs',
@@ -29,22 +29,16 @@ def rest_api():
             detach=True
         )
         output = container.attach(stdout=True, stream=True, logs=True)
-        name_container = client.containers.list()[0].id[0]
+        name_container = client.containers.list(all=True)[0].id[:12]
         for line in output:
-            print(line)
-
+            print({line})
         container.wait()
-        # container = client.containers.run(
-        #     image='test-cucumber',
-        #     command=f'--rm {client.containers.list()}',
-        #     detach=True
-        # )
         tree = etree.parse('/Users/dimart/tmp_docker/logs/result.xml')
-        xml_hostname = tree.xpath('//testsuites/testsuite/@hostname')[0]
+        xml_hostname = tree.xpath('//testsuites/testsuite/@hostname')
         return {
         'request': {
             'name': test_name,
-            'hostname' : xml_hostname,
+            'hostname' : xml_hostname[0],
             'format': format,
             'container': f'{name_container}'
         },
