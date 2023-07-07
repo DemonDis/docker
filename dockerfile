@@ -1,13 +1,10 @@
 FROM python:3
 
-USER root:root
-
 WORKDIR /usr/src/app
-
-VOLUME [ "/Users/dimart/tmp_docker:/usr/src/app/logs" ]
 
 ARG geckodriver_ver=0.33.0
 ARG chromedriver_ver=114.0.5735.90
+
 # =======
 # FIREFOX
 # =======
@@ -43,9 +40,7 @@ RUN wget https://chromedriver.storage.googleapis.com/${chromedriver_ver}/chromed
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt \
     && rm ./requirements.txt
+RUN  mkdir logs \
+    && chmod 777 logs
 
-# CMD [ "python", "./test_01.py" ]
-
-COPY [ "tests", "test.feature", "./" ]
-
-# USER runner:runner
+COPY [ "./tests", "./" ]

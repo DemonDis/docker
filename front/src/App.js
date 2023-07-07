@@ -10,6 +10,7 @@ function App() {
     axios.post(baseURL, {
         'request': {
             'name': testName,
+            'date': new Date(),
             'format': 'xml'
         },
         'request_type': 'auto_test'

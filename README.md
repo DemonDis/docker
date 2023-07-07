@@ -18,7 +18,7 @@ $ docker build -t test-cucumber .
 ```
 ## run pytest test
 ```bash
-$ docker run test-cucumber pytest test_01.py
+$ docker run test-cucumber pytest ./test_01/test_01.py
 ```
 ## IN => image docker bash terminal
 ```bash
