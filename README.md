@@ -36,3 +36,14 @@ $ cp /browser/firefox-esr_102.12.0esr-1_amd64.deb /var/cache/apt/archives
 ```bash
 $ docker run -it -v /Users/dimart/tmp_docker:/usr/src/app/logs test-cucumber pytest test_01.py
 ```
+
+# ALLURE
+## build image ALLURE
+```bash
+$ docker build -t allure .
+```
+
+## IN => image docker bash terminal
+```bash
+$ docker run -it allure bash
+```

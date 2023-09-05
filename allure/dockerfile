@@ -1,0 +1,13 @@
+FROM openjdk
+
+WORKDIR /usr/src/testapi
+ARG allure_ver=2.24.0
+
+# =======
+# ALLURE
+# =======
+# RUN wget https://github.com/allure-framework/allure2/archive/refs/tags/2.24.0.tar.gz
+ADD https://github.com/allure-framework/allure2/archive/refs/tags/${allure_ver}.tar.gz /usr/src/testapi
+
+RUN tar -xf /usr/src/testapi/${allure_ver}.tar.gz -C /bin \
+    && rm /usr/src/testapi/${allure_ver}.tar.gz
