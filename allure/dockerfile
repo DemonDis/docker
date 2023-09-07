@@ -1,4 +1,4 @@
-FROM openjdk
+FROM openjdk:22-jdk-bullseye
 
 WORKDIR /usr/src/testapi
 ARG allure_ver=2.24.0
@@ -6,8 +6,12 @@ ARG allure_ver=2.24.0
 # =======
 # ALLURE
 # =======
-# RUN wget https://github.com/allure-framework/allure2/archive/refs/tags/2.24.0.tar.gz
-ADD https://github.com/allure-framework/allure2/archive/refs/tags/${allure_ver}.tar.gz /usr/src/testapi
+RUN wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip \
+    && unzip allure-2.24.0.zip \
+    && mv allure-2.24.0/ /usr/local/bin/allure-2.24.0 \
+    && rm allure-2.24.0.zip
 
-RUN tar -xf /usr/src/testapi/${allure_ver}.tar.gz -C /bin \
-    && rm /usr/src/testapi/${allure_ver}.tar.gz
+ENV PATH="$PATH:/usr/local/bin/allure-2.24.0/bin"
+# https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip
+# RUN tar -xf /usr/src/testapi/${allure_ver}.tar.gz -C /bin \
+#     && rm /usr/src/testapi/${allure_ver}.tar.gz
