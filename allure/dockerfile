@@ -9,9 +9,8 @@ ARG allure_ver=2.24.0
 RUN wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip \
     && unzip allure-2.24.0.zip \
     && mv allure-2.24.0/ /usr/local/bin/allure-2.24.0 \
-    && rm allure-2.24.0.zip
+    && rm allure-2.24.0.zip \
+    && mkdir logs report
 
 ENV PATH="$PATH:/usr/local/bin/allure-2.24.0/bin"
-# https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip
-# RUN tar -xf /usr/src/testapi/${allure_ver}.tar.gz -C /bin \
-#     && rm /usr/src/testapi/${allure_ver}.tar.gz
+

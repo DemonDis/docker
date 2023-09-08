@@ -34,5 +34,5 @@ $ cp /browser/firefox-esr_102.12.0esr-1_amd64.deb /var/cache/apt/archives
 ```
 ## Folder local <==> docker
 ```bash
-$ docker run -it -v /Users/dimart/tmp_docker:/usr/src/app/logs test-cucumber pytest test_01.py
+$ docker run --rm -it -v /Users/dimart/tmp_docker:/usr/src/app/logs test-cucumber pytest --alluredir=/usr/src/app/logs ./test_01/test_01.py
 ```
