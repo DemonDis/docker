@@ -3,9 +3,6 @@ FROM openjdk:22-jdk-bullseye
 WORKDIR /usr/src/testapi
 ARG allure_ver=2.24.0
 
-# =======
-# ALLURE
-# =======
 RUN wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip \
     && unzip allure-2.24.0.zip \
     && mv allure-2.24.0/ /usr/local/bin/allure-2.24.0 \
@@ -14,3 +11,6 @@ RUN wget https://github.com/allure-framework/allure2/releases/download/2.24.0/al
 
 ENV PATH="$PATH:/usr/local/bin/allure-2.24.0/bin"
 
+COPY . .
+
+CMD start.sh
