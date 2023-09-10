@@ -1,5 +1,5 @@
-allure open -p 9999 report&
+allure generate logs --clean -o report
 
 cp -r ./report/history ./logs
 
-allure generate logs --clean -o report
+allure open -p 9999 report&

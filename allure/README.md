@@ -30,3 +30,17 @@ $ allure generate logs --clean -o report
 ```bash
 $ chmod +x *.sh
 ```
+
+### JSON ALLURE
+
+1. result
+```bash
+# result -> container
+"uuid": "43929d7f-0efa-4833-a859-2e15ae402c47"
+# result for history
+"historyId": "c22f607cc0f0aa1e8714d3d578634f0c",
+# result id
+"testCaseId": "c22f607cc0f0aa1e8714d3d578634f0c", 
+# constainer -> resulr
+"children": ["43929d7f-0efa-4833-a859-2e15ae402c47"]
+```

@@ -1,0 +1,28 @@
+{
+    "name": "test_посещаю_фронт",
+    "status": "passed",
+    "description": "test.feature: посещаю фронт",
+    "attachments": [
+        {
+            "name": "stdout",
+            "source": "dffd7748-d9e9-4faa-b552-54b2e309d884-attachment.txt",
+            "type": "text/plain"
+        }
+    ], 
+    "start": 1694184857618, 
+    "stop": 1694184866184, 
+    "uuid": "43929d7f-0efa-4833-a859-2e15ae402c47", 
+    "historyId": "c22f607cc0f0aa1e8714d3d578634f0c", 
+    "testCaseId": "c22f607cc0f0aa1e8714d3d578634f0c", 
+    "fullName": "test_01#test_посещаю_фронт", 
+    "labels": 
+    [
+        {"name": "tag", "value": "@pytest.mark.usefixtures"}, 
+        {"name": "suite", "value": "test_01"}, 
+        {"name": "host", "value": "631e5c2a205e"}, 
+        {"name": "thread", "value": "1-MainThread"}, 
+        {"name": "framework", "value": "pytest"}, 
+        {"name": "language", "value": "cpython3"}, 
+        {"name": "package", "value": "test_01"}
+    ]
+}
