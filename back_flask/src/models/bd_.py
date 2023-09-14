@@ -1,14 +1,16 @@
-
+import json
 import psycopg2
 from psycopg2 import Error
 from password import DB_CONNECT
 
 try:
-    connection = psycopg2.connect(user=DB_CONNECT.get("user"),
-                                  password=DB_CONNECT.get("password"),
-                                  host=DB_CONNECT.get("host"),
-                                  port=DB_CONNECT.get("port"),
-                                  database=DB_CONNECT.get("database"))
+    connection = psycopg2.connect(
+        user=DB_CONNECT.get("user"),
+        password=DB_CONNECT.get("password"),
+        host=DB_CONNECT.get("host"),
+        port=DB_CONNECT.get("port"),
+        database=DB_CONNECT.get("database")
+    )
     cursor = connection.cursor()
     print("Информация о сервере PostgreSQL")
     print(connection.get_dsn_parameters(), "\n")
@@ -16,6 +18,12 @@ try:
     record = cursor.fetchone()
     print("Вы подключены к - ", record, "\n")
 
+    cursor.execute("SELECT * FROM post")
+    post = cursor.fetchall()
+    # dictionary = json.loads(post[0])
+    print("💥 💥  TABLE 💥 💥 ", "\n", post)
+    print("💥 💥  TABLE 💥 💥 ")
+    
 except (Exception, Error) as error:
     print("Ошибка при работе с PostgreSQL", error)
 finally:
