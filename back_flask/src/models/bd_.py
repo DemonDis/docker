@@ -23,7 +23,9 @@ try:
     # dictionary = json.loads(post[0])
     print("💥 💥  TABLE 💥 💥 ", "\n", post)
     print("💥 💥  TABLE 💥 💥 ")
-    
+    for i in post:
+        with open(f'{i[0]}.json', 'w') as f:
+            f.write(json.dumps(i))
 except (Exception, Error) as error:
     print("Ошибка при работе с PostgreSQL", error)
 finally:
