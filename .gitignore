@@ -15,3 +15,6 @@ log
 
 # venv
 .venv
+
+# password
+password.py
