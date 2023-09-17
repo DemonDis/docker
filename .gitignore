@@ -16,5 +16,8 @@ log
 # venv
 .venv
 
+# pytest
+logs
+
 # password
 password.py

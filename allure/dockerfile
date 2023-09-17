@@ -5,8 +5,7 @@ ARG allure_ver=2.24.0
 
 COPY . .
 
-ENV PATH="$PATH:/usr/local/bin/allure-2.24.0/bin"
-EXPOSE 9999 9999
+# EXPOSE 9999 9999
 
 RUN wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip \
     && unzip allure-2.24.0.zip \
@@ -15,6 +14,7 @@ RUN wget https://github.com/allure-framework/allure2/releases/download/2.24.0/al
     && mkdir logs report \
     && chmod +x /usr/src/testapi/start.sh 
 
+ENV PATH="$PATH:/usr/local/bin/allure-2.24.0/bin"
 # VOLUME [ "" ]
 
-CMD /usr/src/testapi/start.sh
+# CMD /usr/src/testapi/start.sh
