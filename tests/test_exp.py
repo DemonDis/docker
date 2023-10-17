@@ -41,7 +41,11 @@ def test_exp_skiped():
 def test_exp_warning():
     pytest.warns('WARNING !!!')
 
-@pytest.mark.unknown
-
+# @pytest.mark.unknown
 def test_exp_unknown():
     pass
+    
+
+
+def test_username(my_username):
+    test_username.__doc__ = "Verify username and password for: " + str(my_username)
